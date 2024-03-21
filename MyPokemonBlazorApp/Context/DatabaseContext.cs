@@ -17,6 +17,6 @@ namespace MyPokemonBlazorApp.Context
             var dbpath = Path.Join(path, "pokemon.db");
             optionsBuilder.UseSqlite($"Data Source={dbpath}");
       }
-    
     }
+
 }

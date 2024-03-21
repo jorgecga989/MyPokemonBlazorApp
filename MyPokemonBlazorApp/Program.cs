@@ -1,4 +1,5 @@
 using MyPokemonBlazorApp.Components;
+using MyPokemonBlazorApp.Components.Pages;
 using MyPokemonBlazorApp.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +9,10 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddDbContext<DatabaseContext>();
+builder.Services.AddScoped<PokemonImageGrabber>();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
