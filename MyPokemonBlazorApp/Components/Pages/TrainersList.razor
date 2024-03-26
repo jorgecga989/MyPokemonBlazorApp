@@ -1,0 +1,58 @@
+﻿@inject DatabaseContext DbContext
+
+
+@if (showForm)
+{
+    <div class="card">
+        <div class="card-body bg-light">
+            <h4 class="card-title">
+                @(model.Id == 0 ? "Add Trainer" : "Edit Trainer")
+            </h4>
+            <EditForm OnValidSubmit="Submit" EditContext="editContext">
+                <DataAnnotationsValidator/>
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <label for="Id" class="form-label">Id</label>
+                        <InputText class="form-control" placeholder="Id" @bind-Value="model.Id" />
+                        <ValidationMessage For="@(() => model.Id)"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <InputText class="form-control" placeholder="Name" @bind-Value="model.Name" />
+                        <ValidationMessage For="@(() => model.Name)" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="Companion" class="form-label">Companion</label>
+                        <InputNumber class="form-control" @bind-Value="model.Companion" />
+                        <ValidationMessage For="@(() => model.Companion)" />
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Companion</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var trainer in trainers)
+        {
+            <tr>
+                <td>@trainer.Id</td>
+                <td>@pokemon.Name</td>
+                <td>@pokemon.Companion</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private form showform
+}
